@@ -5,6 +5,12 @@ import { LinkContainer } from "react-router-bootstrap";
 import "./Home.css";
 
 export default function Home(props) {
+    // This is the state for our componen
+    // This holds the list of objects for the user when they log in
+    // You can rename the variables to match your object type
+    // Example: for a notes app, you can name items as notes, and
+    // setItems as setNotes. They are loaded in the useEffect method below.
+    // Rename all instances to match your object name.
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -29,19 +35,21 @@ export default function Home(props) {
 
     function loadItems() {
         //replace "accounts" with your site db and endpoint
-        return API.get("accounts", "/accounts");
+        return API.get("items", "/items");
     }
 
+    // Loop through the items loaded from the database and display them in a list 
+    // component on the home page.
     function renderItemsList(items) {
         return [{}].concat(items).map((item, i) =>
             i !== 0 ? (
-                <LinkContainer key={item.accountId} to={`/accounts/${items.accountId}`}>
+                <LinkContainer key={item.accountId} to={`/items/${items.accountId}`}>
                     <ListGroupItem header={item.content.trim().split("\n")[0]}>
                         {"Created: " + new Date(item.createdAt).toLocaleString()}
                     </ListGroupItem>
                 </LinkContainer>
             ) : (
-                    <LinkContainer key="new" to="/accounts/new">
+                    <LinkContainer key="new" to="/items/new">
                         <ListGroupItem>
                             <h4>
                                 <b>{"\uFF0B"}</b> Create a new item
@@ -52,6 +60,9 @@ export default function Home(props) {
         );
     }
 
+    // The next two functions are called in the render function at the end of this component
+    // If the user has not logged in, renderLander will be called. If the user is logged in
+    // renderItems will be called, and display their list of items from the database
     function renderLander() {
         return (
             <div className="lander">
@@ -63,7 +74,7 @@ export default function Home(props) {
 
     function renderItems() {
         return (
-            <div className="notes">
+            <div className="items">
                 <PageHeader>Your Items</PageHeader>
                 <ListGroup>
                     {!isLoading && renderItemsList(items)}

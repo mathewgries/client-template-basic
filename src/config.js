@@ -1,12 +1,67 @@
+// While settin up your dev environment, add your deploy values in this first export
 export default {
+    s3: {
+        REGION: "YOUR_S3_UPLOADS_BUCKET_REGION",
+        BUCKET: "YOUR_S3_UPLOADS_BUCKET_NAME"
+    },
     apiGateway: {
-        REGION: "us-east-1",
-        URL: "https://1yt69x59a7.execute-api.us-east-1.amazonaws.com/dev"
+        REGION: "YOUR_API_GATEWAY_REGION",
+        URL: "YOUR_API_GATEWAY_URL"
     },
     cognito: {
-        REGION: "us-east-1",
-        USER_POOL_ID: "us-east-1_fYW63djG8",
-        APP_CLIENT_ID: "5ek6hrs9286gcsghknhc5cn5b2",
-        IDENTITY_POOL_ID: "us-east-1:8793d470-ec89-414c-8215-53114b13593d"
+        REGION: "YOUR_COGNITO_REGION",
+        USER_POOL_ID: "YOUR_COGNITO_USER_POOL_ID",
+        APP_CLIENT_ID: "YOUR_COGNITO_APP_CLIENT_ID",
+        IDENTITY_POOL_ID: "YOUR_IDENTITY_POOL_ID"
     }
 };
+
+// When you are ready to deploy your front end to build site like netlify,
+// Remove the configs from the above, and add your dev and prod deploy values
+// to the below configs.
+// const dev = {
+//     // STRIPE_KEY: "YOUR_STRIPE_DEV_PUBLIC_KEY",
+//     s3: {
+//         REGION: "YOUR_DEV_S3_UPLOADS_BUCKET_REGION",
+//         BUCKET: "YOUR_DEV_S3_UPLOADS_BUCKET_NAME"
+//     },
+//     apiGateway: {
+//         REGION: "YOUR_DEV_API_GATEWAY_REGION",
+//         URL: "YOUR_DEV_API_GATEWAY_URL"
+//     },
+//     cognito: {
+//         REGION: "YOUR_DEV_COGNITO_REGION",
+//         USER_POOL_ID: "YOUR_DEV_COGNITO_USER_POOL_ID",
+//         APP_CLIENT_ID: "YOUR_DEV_COGNITO_APP_CLIENT_ID",
+//         IDENTITY_POOL_ID: "YOUR_DEV_IDENTITY_POOL_ID"
+//     }
+// };
+
+// const prod = {
+//     //STRIPE_KEY: "YOUR_STRIPE_PROD_PUBLIC_KEY",
+//     s3: {
+//         REGION: "YOUR_PROD_S3_UPLOADS_BUCKET_REGION",
+//         BUCKET: "YOUR_PROD_S3_UPLOADS_BUCKET_NAME"
+//     },
+//     apiGateway: {
+//         REGION: "YOUR_PROD_API_GATEWAY_REGION",
+//         URL: "YOUR_PROD_API_GATEWAY_URL"
+//     },
+//     cognito: {
+//         REGION: "YOUR_PROD_COGNITO_REGION",
+//         USER_POOL_ID: "YOUR_PROD_COGNITO_USER_POOL_ID",
+//         APP_CLIENT_ID: "YOUR_PROD_COGNITO_APP_CLIENT_ID",
+//         IDENTITY_POOL_ID: "YOUR_PROD_IDENTITY_POOL_ID"
+//     }
+// };
+
+// // Default to dev if not set
+// const config = process.env.REACT_APP_STAGE === 'prod'
+//     ? prod
+//     : dev;
+
+// export default {
+//     // Add common config values here
+//     //MAX_ATTACHMENT_SIZE: 5000000,
+//     ...config
+// };
